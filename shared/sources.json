@@ -413,6 +413,14 @@
     "color": "blue",
     "interval": 600000
   },
+  "jintou": {
+    "name": "金投快讯",
+    "type": "realtime",
+    "column": "finance",
+    "home": "https://kuaixun.cngold.org/",
+    "color": "yellow",
+    "interval": 1800000
+  },
   "baidu": {
     "name": "百度热搜",
     "type": "hottest",

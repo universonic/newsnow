@@ -1,4 +1,3 @@
-import process from "node:process"
 import { Interval } from "./consts"
 import { typeSafeObjectFromEntries } from "./type.util"
 import type { OriginSource, Source, SourceID } from "./types"
@@ -11,6 +10,8 @@ const Time = {
   Common: 30 * 60 * 1000,
   Slow: 60 * 60 * 1000,
 }
+
+const isCFPages = Boolean((globalThis as any).process?.env?.CF_PAGES)
 
 export const originSources = {
   "v2ex": {
@@ -326,6 +327,14 @@ export const originSources = {
     type: "realtime",
     home: "https://www.jin10.com",
   },
+  "jintou": {
+    name: "金投快讯",
+    column: "finance",
+    color: "yellow",
+    type: "realtime",
+    interval: Time.Common,
+    home: "https://kuaixun.cngold.org/",
+  },
   "baidu": {
     name: "百度热搜",
     column: "china",
@@ -529,7 +538,7 @@ export function genSources() {
 
   return typeSafeObjectFromEntries(
     _.filter(([_, v]) => {
-      if (v.disable === "cf" && process.env.CF_PAGES) {
+      if (v.disable === "cf" && isCFPages) {
         return false
       } else {
         return v.disable !== true
