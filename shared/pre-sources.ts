@@ -327,6 +327,13 @@ export const originSources = {
     type: "realtime",
     home: "https://www.jin10.com",
   },
+  "futunn": {
+    name: "富途资讯",
+    column: "finance",
+    color: "orange",
+    type: "realtime",
+    home: "https://news.futunn.com",
+  },
   "jintou": {
     name: "金投快讯",
     column: "finance",

@@ -413,6 +413,14 @@
     "color": "blue",
     "interval": 600000
   },
+  "futunn": {
+    "name": "富途资讯",
+    "type": "hottest",
+    "column": "finance",
+    "home": "https://news.futunn.com",
+    "color": "orange",
+    "interval": 600000
+  },
   "jintou": {
     "name": "金投快讯",
     "type": "realtime",
