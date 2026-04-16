@@ -1,6 +1,6 @@
 import type { NewsItem, SourceID, SourceResponse } from "@shared/types"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
-import { AnimatePresence, motion, useInView } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { useWindowSize } from "react-use"
 import { forwardRef, useImperativeHandle } from "react"
 import { OverlayScrollbar } from "../common/overlay-scrollbar"
@@ -23,10 +23,6 @@ interface NewsCardProps {
 export const CardWrapper = forwardRef<HTMLElement, ItemsProps>(({ id, isDragging, setHandleRef, style, ...props }, dndRef) => {
   const ref = useRef<HTMLDivElement>(null)
 
-  const inView = useInView(ref, {
-    once: true,
-  })
-
   useImperativeHandle(dndRef, () => ref.current! as HTMLDivElement)
 
   return (
@@ -45,7 +41,7 @@ export const CardWrapper = forwardRef<HTMLElement, ItemsProps>(({ id, isDragging
       }}
       {...props}
     >
-      {inView && <NewsCard id={id} setHandleRef={setHandleRef} />}
+      <NewsCard id={id} setHandleRef={setHandleRef} />
     </div>
   )
 })

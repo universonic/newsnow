@@ -23,7 +23,9 @@
     "column": "world",
     "home": "https://www.zaobao.com",
     "color": "red",
-    "interval": 1800000
+    "interval": 900000,
+    "cacheTTL": 900000,
+    "refetchInterval": 900000
   },
   "wallstreetcn": {
     "redirect": "wallstreetcn-quick",
@@ -32,7 +34,9 @@
     "column": "finance",
     "home": "https://wallstreetcn.com/",
     "color": "blue",
-    "interval": 300000,
+    "interval": 900000,
+    "cacheTTL": 900000,
+    "refetchInterval": 900000,
     "title": "快讯"
   },
   "wallstreetcn-quick": {
@@ -41,7 +45,9 @@
     "column": "finance",
     "home": "https://wallstreetcn.com/",
     "color": "blue",
-    "interval": 300000,
+    "interval": 900000,
+    "cacheTTL": 900000,
+    "refetchInterval": 900000,
     "title": "快讯"
   },
   "wallstreetcn-news": {
@@ -89,7 +95,9 @@
     "column": "china",
     "home": "https://www.thepaper.cn",
     "color": "gray",
-    "interval": 1800000
+    "interval": 900000,
+    "cacheTTL": 900000,
+    "refetchInterval": 900000
   },
   "cls": {
     "redirect": "cls-telegraph",
@@ -199,7 +207,9 @@
     "column": "finance",
     "home": "https://www.jin10.com",
     "color": "blue",
-    "interval": 600000
+    "interval": 900000,
+    "cacheTTL": 900000,
+    "refetchInterval": 900000
   },
   "futunn": {
     "name": "富途资讯",
@@ -207,7 +217,9 @@
     "column": "finance",
     "home": "https://news.futunn.com",
     "color": "orange",
-    "interval": 600000
+    "interval": 900000,
+    "cacheTTL": 900000,
+    "refetchInterval": 900000
   },
   "reuters": {
     "title": "Business & Finance",
@@ -232,6 +244,17 @@
     "cacheTTL": 900000,
     "refetchInterval": 900000
   },
+  "finance_time_buzzing": {
+    "name": "金融时报 Buzzing",
+    "type": "realtime",
+    "desc": "通过 Buzzing 的 Financial Times feed 接入",
+    "column": "finance",
+    "home": "https://ft.buzzing.cc/",
+    "color": "sky",
+    "interval": 900000,
+    "cacheTTL": 900000,
+    "refetchInterval": 900000
+  },
   "reuters_buzzing": {
     "name": "路透 Buzzing",
     "type": "realtime",
@@ -243,12 +266,45 @@
     "cacheTTL": 900000,
     "refetchInterval": 900000
   },
-  "breaking_buzzing": {
-    "name": "突发 Buzzing",
+  "economistnew_buzzing": {
+    "name": "经济学人 Buzzing",
     "type": "realtime",
-    "desc": "通过 Buzzing 的 The Spectator Index feed 接入，公开 feed 当前较旧",
+    "desc": "通过 Buzzing 的 The Economist 多栏目 feed 接入",
     "column": "world",
-    "home": "https://breaking.buzzing.cc/",
+    "home": "https://economistnew.buzzing.cc/",
+    "color": "emerald",
+    "interval": 900000,
+    "cacheTTL": 900000,
+    "refetchInterval": 900000
+  },
+  "theguardian_buzzing": {
+    "name": "卫报 Buzzing",
+    "type": "realtime",
+    "desc": "通过 Buzzing 的 The Guardian 国际版 feed 接入",
+    "column": "world",
+    "home": "https://theguardian.buzzing.cc/",
+    "color": "blue",
+    "interval": 900000,
+    "cacheTTL": 900000,
+    "refetchInterval": 900000
+  },
+  "atlantic_buzzing": {
+    "name": "大西洋周刊 Buzzing",
+    "type": "realtime",
+    "desc": "通过 Buzzing 的 The Atlantic feed 接入",
+    "column": "world",
+    "home": "https://atlantic.buzzing.cc/",
+    "color": "rose",
+    "interval": 900000,
+    "cacheTTL": 900000,
+    "refetchInterval": 900000
+  },
+  "bbc_buzzing": {
+    "name": "BBC Buzzing",
+    "type": "realtime",
+    "desc": "通过 Buzzing 的 BBC World News feed 接入",
+    "column": "world",
+    "home": "https://bbc.buzzing.cc/",
     "color": "red",
     "interval": 900000,
     "cacheTTL": 900000,
@@ -287,7 +343,9 @@
     "column": "china",
     "home": "https://www.ifeng.com",
     "color": "red",
-    "interval": 600000
+    "interval": 900000,
+    "cacheTTL": 900000,
+    "refetchInterval": 900000
   },
   "tencent": {
     "redirect": "tencent-hot",
@@ -296,7 +354,9 @@
     "column": "china",
     "home": "https://news.qq.com/tag/aEWqxLtdgmQ=",
     "color": "blue",
-    "interval": 1800000,
+    "interval": 900000,
+    "cacheTTL": 900000,
+    "refetchInterval": 900000,
     "title": "综合早报"
   },
   "tencent-hot": {
@@ -305,7 +365,9 @@
     "column": "china",
     "home": "https://news.qq.com/tag/aEWqxLtdgmQ=",
     "color": "blue",
-    "interval": 1800000,
+    "interval": 900000,
+    "cacheTTL": 900000,
+    "refetchInterval": 900000,
     "title": "综合早报"
   }
 }
