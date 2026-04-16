@@ -23,6 +23,14 @@ async function downloadImage(url: string, outputPath: string, id: string) {
   }
 }
 
+function getHomeHost(home: string) {
+  try {
+    return new URL(home).hostname
+  } catch {
+    return home.replace(/^https?:\/\//, "").split("/")[0]
+  }
+}
+
 async function main() {
   await Promise.all(
     Object.entries(originSources).map(async ([id, source]) => {
@@ -33,7 +41,7 @@ async function main() {
           return
         }
         if (!source.home) return
-        await downloadImage(`https://icons.duckduckgo.com/ip3/${source.home.replace(/^https?:\/\//, "").replace(/\/$/, "")}.ico`, icon, id)
+        await downloadImage(`https://icons.duckduckgo.com/ip3/${getHomeHost(source.home)}.ico`, icon, id)
       } catch (e) {
         consola.error(id, "\n", e)
       }

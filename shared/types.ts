@@ -59,6 +59,14 @@ export interface Source {
    * 刷新的间隔时间
    */
   interval: number
+  /**
+   * 服务端缓存复用窗口，不设置时沿用默认 TTL
+   */
+  cacheTTL?: number
+  /**
+   * 前端自动轮询间隔，不设置时不自动轮询
+   */
+  refetchInterval?: number
   color: Color
 
   /**

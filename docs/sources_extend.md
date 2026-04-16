@@ -9,7 +9,6 @@ Source: https://finance.sina.com.cn/jjxw/2026-03-09/doc-inhqksxs0698919.shtml?cr
 
 ## 2) futunn_com.md
 
-
 ---
 
 ## 3) huxiu_com.md
@@ -26,10 +25,13 @@ Contents:
 https://www.investing.com/news
 https://cn.investing.com/news
 
-
 ---
 
 ## 5) reuters_com.md
+
+### 已完成添加
+
+当前通过 Reuters Best 的公开 `Business & Finance` 页面接入，避开 Reuters 主站服务端直连时的风控拦截。
 
 ### 首次请求示例
 ```bash

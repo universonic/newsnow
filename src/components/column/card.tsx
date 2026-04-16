@@ -1,5 +1,5 @@
 import type { NewsItem, SourceID, SourceResponse } from "@shared/types"
-import { useQuery } from "@tanstack/react-query"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { AnimatePresence, motion, useInView } from "framer-motion"
 import { useWindowSize } from "react-use"
 import { forwardRef, useImperativeHandle } from "react"
@@ -52,18 +52,20 @@ export const CardWrapper = forwardRef<HTMLElement, ItemsProps>(({ id, isDragging
 
 function NewsCard({ id, setHandleRef }: NewsCardProps) {
   const { refresh } = useRefetch()
+  const queryClient = useQueryClient()
   const { data, isFetching, isError } = useQuery({
     queryKey: ["source", id],
     queryFn: async ({ queryKey }) => {
       const id = queryKey[1] as SourceID
       let url = `/s?id=${id}`
       const headers: Record<string, any> = {}
+      const hasQueryData = queryClient.getQueryData<SourceResponse>(["source", id]) !== undefined
       if (refetchSources.has(id)) {
         url = `/s?id=${id}&latest`
         const jwt = safeParseString(localStorage.getItem("jwt"))
         if (jwt) headers.Authorization = `Bearer ${jwt}`
         refetchSources.delete(id)
-      } else if (cacheSources.has(id)) {
+      } else if (!hasQueryData && cacheSources.has(id)) {
         // wait animation
         await delay(200)
         return cacheSources.get(id)
@@ -96,6 +98,7 @@ function NewsCard({ id, setHandleRef }: NewsCardProps) {
     },
     placeholderData: prev => prev,
     staleTime: Infinity,
+    refetchInterval: sources[id].refetchInterval ?? false,
     refetchOnMount: false,
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,

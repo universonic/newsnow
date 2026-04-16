@@ -1,3 +1,4 @@
+import process from "node:process"
 import { Interval } from "./consts"
 import { typeSafeObjectFromEntries } from "./type.util"
 import type { OriginSource, Source, SourceID } from "./types"
@@ -7,11 +8,12 @@ const Time = {
   Realtime: 2 * 60 * 1000,
   Fast: 5 * 60 * 1000,
   Default: Interval, // 10min
+  QuarterHour: 15 * 60 * 1000,
   Common: 30 * 60 * 1000,
   Slow: 60 * 60 * 1000,
 }
 
-const isCFPages = Boolean((globalThis as any).process?.env?.CF_PAGES)
+const isCFPages = Boolean(process.env.CF_PAGES)
 
 export const originSources = {
   "v2ex": {
@@ -86,12 +88,16 @@ export const originSources = {
       },
       news: {
         title: "最新",
-        interval: Time.Common,
+        interval: Time.QuarterHour,
+        cacheTTL: Time.QuarterHour,
+        refetchInterval: Time.QuarterHour,
       },
       hot: {
         title: "最热",
         type: "hottest",
-        interval: Time.Common,
+        interval: Time.QuarterHour,
+        cacheTTL: Time.QuarterHour,
+        refetchInterval: Time.QuarterHour,
       },
     },
   },
@@ -350,12 +356,61 @@ export const originSources = {
     type: "realtime",
     home: "https://news.futunn.com",
   },
+  "reuters": {
+    name: "Reuters",
+    title: "Business & Finance",
+    desc: "通过 Reuters Best 公共财经页接入",
+    column: "finance",
+    color: "orange",
+    type: "realtime",
+    disable: true,
+    interval: Time.QuarterHour,
+    cacheTTL: Time.QuarterHour,
+    refetchInterval: Time.QuarterHour,
+    home: "https://reutersbest.com/topic/business-finance/",
+  },
+  "bbg_buzzing": {
+    name: "彭博 Buzzing",
+    desc: "通过 Buzzing 的 Bloomberg Sitemap feed 接入",
+    column: "finance",
+    color: "yellow",
+    type: "realtime",
+    interval: Time.QuarterHour,
+    cacheTTL: Time.QuarterHour,
+    refetchInterval: Time.QuarterHour,
+    home: "https://bbg.buzzing.cc/",
+  },
+  "reuters_buzzing": {
+    name: "路透 Buzzing",
+    desc: "通过 Buzzing 的 Reuters Bluesky feed 接入",
+    column: "world",
+    color: "orange",
+    type: "realtime",
+    interval: Time.QuarterHour,
+    cacheTTL: Time.QuarterHour,
+    refetchInterval: Time.QuarterHour,
+    home: "https://reuters.buzzing.cc/",
+  },
+  "breaking_buzzing": {
+    name: "突发 Buzzing",
+    desc: "通过 Buzzing 的 The Spectator Index feed 接入，公开 feed 当前较旧",
+    column: "world",
+    color: "red",
+    type: "realtime",
+    disable: true,
+    interval: Time.QuarterHour,
+    cacheTTL: Time.QuarterHour,
+    refetchInterval: Time.QuarterHour,
+    home: "https://breaking.buzzing.cc/",
+  },
   "jintou": {
     name: "金投快讯",
     column: "finance",
     color: "yellow",
     type: "realtime",
-    interval: Time.Common,
+    interval: Time.QuarterHour,
+    cacheTTL: Time.QuarterHour,
+    refetchInterval: Time.QuarterHour,
     home: "https://kuaixun.cngold.org/",
   },
   "baidu": {
@@ -538,6 +593,8 @@ export function genSources() {
       home: source.home,
       color: source.color ?? "primary",
       interval: source.interval ?? Time.Default,
+      cacheTTL: source.cacheTTL,
+      refetchInterval: source.refetchInterval,
     }
     if (source.sub && Object.keys(source.sub).length) {
       Object.entries(source.sub).forEach(([subId, subSource], i) => {
