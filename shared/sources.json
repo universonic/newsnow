@@ -221,18 +221,6 @@
     "cacheTTL": 900000,
     "refetchInterval": 900000
   },
-  "reuters": {
-    "title": "Business & Finance",
-    "name": "Reuters",
-    "type": "realtime",
-    "desc": "通过 Reuters Best 公共财经页接入",
-    "column": "finance",
-    "home": "https://reutersbest.com/topic/business-finance/",
-    "color": "orange",
-    "interval": 900000,
-    "cacheTTL": 900000,
-    "refetchInterval": 900000
-  },
   "bbg_buzzing": {
     "name": "彭博 Buzzing",
     "type": "realtime",

@@ -360,16 +360,6 @@ export const originSources = {
     type: "realtime",
     home: "https://news.futunn.com",
   },
-  "reuters": {
-    name: "Reuters",
-    title: "Business & Finance",
-    desc: "通过 Reuters Best 公共财经页接入",
-    ...QuarterHourRefresh,
-    column: "finance",
-    color: "orange",
-    type: "realtime",
-    home: "https://reutersbest.com/topic/business-finance/",
-  },
   "bbg_buzzing": {
     name: "彭博 Buzzing",
     desc: "通过 Buzzing 的 Bloomberg Sitemap feed 接入",
