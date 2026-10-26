@@ -71,6 +71,23 @@
     "refetchInterval": 900000,
     "title": "最热"
   },
+  "dongqiudi": {
+    "title": "头条",
+    "name": "懂球帝",
+    "type": "realtime",
+    "column": "sports",
+    "home": "https://www.dongqiudi.com",
+    "color": "green",
+    "interval": 600000
+  },
+  "aihot": {
+    "name": "AIHOT",
+    "type": "realtime",
+    "column": "tech",
+    "home": "https://aihot.news/all",
+    "color": "blue",
+    "interval": 300000
+  },
   "tieba": {
     "title": "热议",
     "name": "百度贴吧",

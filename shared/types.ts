@@ -115,4 +115,5 @@ export interface SourceResponse {
   id: SourceID
   updatedTime: number | string
   items: NewsItem[]
+  info?: any
 }
